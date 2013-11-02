@@ -5,7 +5,8 @@ $ventid = $_POST['vent'];
 $logStr = date(DATE_RFC2822);
 $logStr .= ": Querying room " . $roomid;
 if ($ventid != '')
-    $logStr .= ", vent " . $ventid . "\n";
+    $logStr .= ", vent " . $ventid;
+$logStr .= "\n";
 error_log($logStr, 3, "access.log");
 
 $room = Array();
