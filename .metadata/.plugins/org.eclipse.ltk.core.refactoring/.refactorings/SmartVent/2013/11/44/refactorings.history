@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extracts string &apos;Current Temp:&apos; into R.string.current_temp" description="Extracts string &apos;Current Temp:&apos; into R.string.current_temp" file="/SmartVent/res/layout/activity_room.xml" flags="6" id="com.android.ide.eclipse.adt.refactoring.extract.string" mode="EDIT_SOURCE" proj="/SmartVent" rplc-all-java="false" rplc-all-xml="false" sel-end="523" sel-start="523" stamp="1383410039574" tok-esc="Current Temp:" xml-attr-name="android:text"/>
+</session>
