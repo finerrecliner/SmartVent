@@ -1,1 +1,5 @@
 1383410039574	Extracts string 'Current Temp:' into R.string.current_temp
+1383413934928	Extracts string 'Room:' into R.string.room_label
+1383414282178	Extracts string 'set_temp_row' into R.string.set_temp_row
+1383414291552	Extracts string 'Set Temperature:' into R.string.set_temperature_
+1383414371895	Extracts string 'Unknown' into R.string.unknown

@@ -6,7 +6,7 @@
     <string name="menu_settings">Settings</string>
     <string name="current_temp">Current Temp:</string>
     <string name="room_label">Room:</string>
-    <string name="set_temperature">Set Temperature:</string>
-    <string name="unknown">Unknown</string>
+    <string name="set_temp_row">set_temp_row</string>
+    <string name="set_temperature_">Set Temperature:</string>
 
 </resources>

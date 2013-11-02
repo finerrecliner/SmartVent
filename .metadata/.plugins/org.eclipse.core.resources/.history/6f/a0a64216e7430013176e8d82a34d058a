@@ -10,20 +10,18 @@
 		android:id="@+id/room_row"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-	    
-	    <TextView
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/room_label" />
-	    
-	    <TextView
-	        android:id="@+id/room_val"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="right"
-	        android:gravity="right"
-	        android:text="@string/unknown" />
-
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/room_label" />
+    
+    <TextView
+	    android:id="@+id/room_val"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="right"
+	    android:text="@string/unknown" />
     </LinearLayout>
 
     <LinearLayout
@@ -38,12 +36,10 @@
 
         <TextView
             android:id="@+id/current_temp_val"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:gravity="right"
             android:text="@string/unknown" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -56,16 +52,6 @@
             android:layout_height="wrap_content"
             android:text="@string/set_temperature" />
 
-        <EditText
-            android:id="@+id/set_temp_val"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number" >
-
-            <requestFocus />
-        </EditText>
 
     </LinearLayout>
     

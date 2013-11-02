@@ -6,25 +6,10 @@
     android:orientation="vertical"
     tools:context=".RoomActivity" >
 
-    <LinearLayout
-		android:id="@+id/room_row"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-	    
-	    <TextView
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/room_label" />
-	    
-	    <TextView
-	        android:id="@+id/room_val"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="right"
-	        android:gravity="right"
-	        android:text="@string/unknown" />
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:text="@string/room_label" />
 
     <LinearLayout
         android:id="@+id/current_temp_row"
@@ -38,12 +23,10 @@
 
         <TextView
             android:id="@+id/current_temp_val"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:gravity="right"
-            android:text="@string/unknown" />
-
+            android:text="Unknown" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,16 +39,12 @@
             android:layout_height="wrap_content"
             android:text="@string/set_temperature" />
 
-        <EditText
-            android:id="@+id/set_temp_val"
-            android:layout_width="fill_parent"
+        <TextView
+            android:id="@+id/current_temp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number" >
-
-            <requestFocus />
-        </EditText>
+            android:layout_gravity="right"
+            android:text="TextView" />
 
     </LinearLayout>
     
