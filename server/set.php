@@ -2,6 +2,14 @@
 $roomid = $_POST['room'];
 $ventid = $_POST['vent'];
 $setpoint = $_POST['setpoint'];
+
+$logStr = date(DATE_RFC2822);
+$logStr .= ": Setting room " . $roomid;
+if ($ventid != '')
+    $logStr .= ", vent " . $ventid;
+$logStr .= " to setpoint " . $setpoint . "\n";
+error_log($logStr, 3, "access.log");
+
 $room = Array();
 $room['id'] = $roomid;
 $room['temp'] = '73';

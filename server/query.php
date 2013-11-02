@@ -1,6 +1,13 @@
 <?php
 $roomid = $_POST['room'];
 $ventid = $_POST['vent'];
+
+$logStr = date(DATE_RFC2822);
+$logStr .= ": Querying room " . $roomid;
+if ($ventid != '')
+    $logStr .= ", vent " . $ventid . "\n";
+error_log($logStr, 3, "access.log");
+
 $room = Array();
 $room['id'] = $roomid;
 $room['temp'] = '73';
