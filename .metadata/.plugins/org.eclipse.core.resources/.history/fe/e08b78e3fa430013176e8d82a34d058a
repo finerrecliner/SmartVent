@@ -1,0 +1,7 @@
+package com.example.smartvent;
+
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+
+public class GetTempTask extends ScheduledThreadPoolExecutor {
+
+}
