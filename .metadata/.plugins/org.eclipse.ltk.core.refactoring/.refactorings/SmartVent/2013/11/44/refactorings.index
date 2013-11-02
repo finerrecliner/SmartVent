@@ -3,3 +3,6 @@
 1383414282178	Extracts string 'set_temp_row' into R.string.set_temp_row
 1383414291552	Extracts string 'Set Temperature:' into R.string.set_temperature_
 1383414371895	Extracts string 'Unknown' into R.string.unknown
+1383416350949	Extracts string 'Up' into R.string.up
+1383416396437	Extracts string 'Down' into R.string.down
+1383417319759	Delete element

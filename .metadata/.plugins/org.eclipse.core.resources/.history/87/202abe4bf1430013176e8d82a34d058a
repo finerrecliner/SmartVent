@@ -1,0 +1,14 @@
+package com.example.smartvent;
+
+import android.os.AsyncTask;
+
+public class SetTemp extends AsyncTask<String, Void, Void> {
+
+
+	@Override
+	protected Void doInBackground(String... params) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

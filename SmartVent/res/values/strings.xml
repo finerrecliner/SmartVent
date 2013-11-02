@@ -8,5 +8,7 @@
     <string name="room_label">Room:</string>
     <string name="set_temperature">Set Temperature:</string>
     <string name="unknown">Unknown</string>
+    <string name="up">Up</string>
+    <string name="down">Down</string>
 
 </resources>

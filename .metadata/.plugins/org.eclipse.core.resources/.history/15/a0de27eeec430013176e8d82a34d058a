@@ -1,0 +1,14 @@
+package com.example.smartvent;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+
+public class IncreaseTagetTempButton extends Button implements OnClickListener {
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
