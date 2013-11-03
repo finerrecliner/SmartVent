@@ -429,3 +429,21 @@ Caused by: org.eclipse.core.internal.resources.ResourceException: Resource is ou
 	at org.eclipse.core.internal.resources.File.getContents(File.java:278)
 	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:49)
 	... 15 more
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-11-02 19:53:33.883
+!MESSAGE activity_main.xml: Unknown value for getTextArray(0) => quick_room_tile
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-11-02 19:53:51.905
+!MESSAGE activity_main.xml: Unknown value for getTextArray(0) => quick_room_tile
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-11-02 19:53:53.069
+!MESSAGE activity_main.xml: Unknown value for getTextArray(0) => quick_room_tile
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-11-02 19:53:56.039
+!MESSAGE activity_main.xml: Unknown value for getTextArray(0) => quick_room_tile
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2013-11-02 19:53:56.277
+!MESSAGE activity_main.xml: Unknown value for getTextArray(0) => quick_room_tile
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-11-02 21:29:57.857
+!MESSAGE quick_room.xml: Dimension "0" in attribute "layout_width" is missing unit!

@@ -20,7 +20,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
@@ -37,18 +36,18 @@ public class RoomActivity extends Activity implements OnClickListener {
 	private static final int VENT_HALF = 		50;
 	private static final int VENT_CLOSED =		0;
 			
-	private Integer targetTemp = 70;
-	private Integer currentTemp;
-	private String room = "Kitchen";
+	private Room room;
 	private TextView targetTempText;
-	private ScheduledExecutorService scheduleTaskExecutor;
 	private TextView currentTempText;
-	private Integer currentVentState;
+	private ScheduledExecutorService scheduleTaskExecutor;
+
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room);
+        
+    	room = getIntent().getParcelableExtra(getString(R.string.room));
         
         Button upButton = (Button) findViewById(R.id.set_temp_up);
         upButton.setOnClickListener(this);
@@ -57,12 +56,11 @@ public class RoomActivity extends Activity implements OnClickListener {
         downButton.setOnClickListener(this);
         
         targetTempText = (TextView) findViewById(R.id.set_temp_val);
-        targetTempText.setText(targetTemp.toString());
+        targetTempText.setText(this.room.getTargetTemp().toString());
         
         currentTempText = (TextView) findViewById(R.id.current_temp_val);
         
-        TextView roomText = (TextView) findViewById(R.id.room_val);
-        roomText.setText(this.room);
+        setTitle(this.room.getName());
         
         scheduleTaskExecutor = Executors.newSingleThreadScheduledExecutor();
         scheduleTaskExecutor.scheduleAtFixedRate(new Runnable() {
@@ -77,7 +75,7 @@ public class RoomActivity extends Activity implements OnClickListener {
 			    try {
 			    	// Add data
 			        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-			        nameValuePairs.add(new BasicNameValuePair("room", room));
+			        nameValuePairs.add(new BasicNameValuePair("room", room.getName()));
 			        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 			    	
 			    	// Execute HTTP Post Request
@@ -87,10 +85,10 @@ public class RoomActivity extends Activity implements OnClickListener {
 			        JSONObject jsonObj = new JSONObject(jsonStr);
 
 			        Log.i(getString(R.string.app_name), jsonObj.toString());
-			        currentTemp = Integer.parseInt((String)jsonObj.get("temp"));
-			        Log.i(getString(R.string.app_name), currentTemp.toString());			        
-			        currentVentState = Integer.parseInt((String)jsonObj.get("state"));
-			        Log.i(getString(R.string.app_name), currentVentState.toString());
+			        room.setCurrentTemp(Integer.parseInt((String)jsonObj.get("temp")));
+			        Log.i(getString(R.string.app_name), room.getCurrentTemp().toString());			        
+			        room.setVentState(Integer.parseInt((String)jsonObj.get("state")));
+			        Log.i(getString(R.string.app_name), room.getVentState().toString());
 			        
 			    } catch (ClientProtocolException e) {
 			        Toast.makeText(getBaseContext(), "ClientProtocol Error", Toast.LENGTH_SHORT).show();
@@ -105,7 +103,7 @@ public class RoomActivity extends Activity implements OnClickListener {
 
         		runOnUiThread(new Runnable() {
         			public void run() {
-        				currentTempText.setText(currentTemp.toString());
+        				currentTempText.setText(room.getCurrentTemp().toString());
         			}
         		});
 
@@ -119,8 +117,8 @@ public class RoomActivity extends Activity implements OnClickListener {
 			    try {
 			        // Add your data
 			        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-			        nameValuePairs.add(new BasicNameValuePair("room", room));
-			        nameValuePairs.add(new BasicNameValuePair("setpoint",  updateCoolingVent(currentTemp, targetTemp, currentVentState).toString()));
+			        nameValuePairs.add(new BasicNameValuePair("room", room.getName()));
+			        nameValuePairs.add(new BasicNameValuePair("setpoint",  updateCoolingVent(room.getCurrentTemp(), room.getTargetTemp(), room.getVentState()).toString()));
 			        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 			        // Execute HTTP Post Request
@@ -155,26 +153,17 @@ public class RoomActivity extends Activity implements OnClickListener {
 		switch (v.getId())
 		{
 		case R.id.set_temp_up:
-			this.targetTemp++;
+			room.incTargetTemp();
 			break;
 		case R.id.set_temp_down:
-			this.targetTemp--;
+			room.decTargetTemp();
 			break;
 		default:
 			Toast.makeText(this, "Error. Invalid Button", Toast.LENGTH_SHORT).show();
 		}
 		
 		// update target temp being displayed
-		targetTempText.setText(this.targetTemp.toString());
-		
-		// tell server new temp
-//		// new SetTempTask(this).execute(this.room, this.targetTemp.toString());
-//		new AsyncTask<String, Void, Void>() {
-//			@Override
-//			protected Void doInBackground(String... params) {
-//			return null;
-//			}
-//		}.execute(this.room, updateCoolingVent(this.currentTemp, this.targetTemp, this.currentVentState).toString());
+		targetTempText.setText(room.getTargetTemp().toString());
 	}
 
 	private Integer updateCoolingVent(Integer currentTemp, Integer targetTemp, Integer currentVentState) {

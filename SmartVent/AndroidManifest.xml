@@ -16,13 +16,24 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.smartvent.RoomActivity"
+            android:name="com.example.smartvent.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+		<activity
+                android:name=".RoomActivity"
+                android:exported="false"
+                android:label="@string/app_name" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="com.example.smartvent/room"/>
             </intent-filter>
         </activity>
     </application>

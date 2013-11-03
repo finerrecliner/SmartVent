@@ -1,0 +1,9 @@
+package com.example.smartvent;
+
+public class Room {
+
+	private String name;
+	private Integer currentTemp;
+	private Integer targetTemp;
+
+}

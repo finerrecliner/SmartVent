@@ -1,0 +1,31 @@
+package com.example.smartvent;
+
+public class Room {
+
+	private String name;
+	private Integer currentTemp = 70;
+	private Integer targetTemp = 70;
+	
+	public Room(String name) {
+		this.name = name;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Integer getCurrentTemp() {
+		return currentTemp;
+	}
+	public void setCurrentTemp(Integer currentTemp) {
+		this.currentTemp = currentTemp;
+	}
+	public Integer getTargetTemp() {
+		return targetTemp;
+	}
+	public void setTargetTemp(Integer targetTemp) {
+		this.targetTemp = targetTemp;
+	}
+
+}
