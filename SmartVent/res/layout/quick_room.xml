@@ -17,7 +17,7 @@
         android:contentDescription="@string/unknown"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:src="@android:drawable/ic_menu_gallery" />
+        android:src="@android:drawable/ic_media_play" />
 
 	<TextView
 	    android:id="@+id/quick_room_name"

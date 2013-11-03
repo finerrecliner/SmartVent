@@ -1,0 +1,229 @@
+package com.example.smartvent;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class RoomActivity extends Activity implements OnClickListener {
+
+	private static final int VENT_OPEN = 		100;
+	private static final int VENT_HALF = 		50;
+	private static final int VENT_CLOSED =		0;
+			
+	private Room room;
+	private TextView targetTempText;
+	private TextView currentTempText;
+	private ScheduledExecutorService scheduleTaskExecutor;
+
+	
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_room);
+        
+    	room = getIntent().getParcelableExtra(getString(R.string.room));
+        
+        Button upButton = (Button) findViewById(R.id.set_temp_up);
+        upButton.setOnClickListener(this);
+
+        Button downButton = (Button) findViewById(R.id.set_temp_down);
+        downButton.setOnClickListener(this);
+        
+        targetTempText = (TextView) findViewById(R.id.set_temp_val);
+        targetTempText.setText(this.room.getTargetTemp().toString());
+        
+        currentTempText = (TextView) findViewById(R.id.current_temp_val);
+        
+        setTitle(this.room.getName());
+        
+        scheduleTaskExecutor = Executors.newSingleThreadScheduledExecutor();
+        scheduleTaskExecutor.scheduleAtFixedRate(new Runnable() {
+        	public void run() {
+
+        		/* Read current status */
+        		
+			    // Create a new HttpClient and Post Header
+			    HttpClient httpclient = new DefaultHttpClient();
+			    HttpPost httppost = new HttpPost("http://www.obycode.com/smartventure/query.php");
+		        
+			    try {
+			    	// Add data
+			        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+			        nameValuePairs.add(new BasicNameValuePair("room", room.getName()));
+			        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			    	
+			    	// Execute HTTP Post Request
+			        HttpResponse response = httpclient.execute(httppost);
+			        BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
+			        String jsonStr = reader.readLine();
+			        JSONObject jsonObj = new JSONObject(jsonStr);
+
+			        Log.i(getString(R.string.app_name), jsonObj.toString());
+			        room.setCurrentTemp(Integer.parseInt((String)jsonObj.get("temp")));
+			        Log.i(getString(R.string.app_name), room.getCurrentTemp().toString());			        
+			        room.setVentState(Integer.parseInt((String)jsonObj.get("state")));
+			        Log.i(getString(R.string.app_name), room.getVentState().toString());
+			        
+			    } catch (ClientProtocolException e) {
+			        Toast.makeText(getBaseContext(), "ClientProtocol Error", Toast.LENGTH_SHORT).show();
+			        Log.e(getString(R.string.app_name), "ClientProtocol Error");
+			    } catch (IOException e) {
+			    	Toast.makeText(getBaseContext(), "IO HTTP Error", Toast.LENGTH_SHORT).show();
+			    	Log.e(getString(R.string.app_name), "IO HTTP Error");
+			    } catch (JSONException e) {
+			    	Toast.makeText(getBaseContext(), "JSON Error", Toast.LENGTH_SHORT).show();
+			    	Log.e(getString(R.string.app_name), "JSON Error");
+				}
+
+        		runOnUiThread(new Runnable() {
+        			public void run() {
+        				currentTempText.setText(room.getCurrentTemp().toString());
+        			}
+        		});
+
+        		
+        		/* Set new vent state */
+        		
+			    // Create a new HttpClient and Post Header
+			    httpclient = new DefaultHttpClient();
+			    httppost = new HttpPost("http://www.obycode.com/smartventure/set.php");
+
+			    try {
+			        // Add your data
+			        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+			        nameValuePairs.add(new BasicNameValuePair("room", room.getName()));
+			        nameValuePairs.add(new BasicNameValuePair("setpoint",  updateCoolingVent(room.getCurrentTemp(), room.getTargetTemp(), room.getVentState()).toString()));
+			        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+			        // Execute HTTP Post Request
+			        HttpResponse response = httpclient.execute(httppost);
+			        
+			    } catch (ClientProtocolException e) {
+			        Toast.makeText(getBaseContext(), "ClientProtocol Error", Toast.LENGTH_SHORT).show();
+			    } catch (IOException e) {
+			    	Toast.makeText(getBaseContext(), "IO HTTP Error", Toast.LENGTH_SHORT).show();
+			    }
+        	}
+        }, 0, 5, TimeUnit.SECONDS);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_room, menu);
+        return true;
+    }
+    
+    @Override
+    protected void onDestroy() {
+    	// kill scheduled Task Executor
+    	scheduleTaskExecutor.shutdown();
+    	
+    	super.onDestroy();
+    };
+
+    @Override
+    public void onBackPressed() {
+		// implicit intent
+		Intent intent = new Intent(this, MainActivity.class);
+		intent.putExtra(getString(R.string.room), room);
+		startActivityForResult(intent, EDIT_REQUEST);
+		
+        Intent data = new Intent();     
+        data.putExtra("Latitude", location.getLatitude() );
+        data.putExtra("Longitude", location.getLongitude());
+        setResult(RESULT_OK,data);
+        super.onBackPressed();
+
+    }
+    
+    
+	@Override
+	public void onClick(View v) {
+		switch (v.getId())
+		{
+		case R.id.set_temp_up:
+			room.incTargetTemp();
+			break;
+		case R.id.set_temp_down:
+			room.decTargetTemp();
+			break;
+		default:
+			Toast.makeText(this, "Error. Invalid Button", Toast.LENGTH_SHORT).show();
+		}
+		
+		// update target temp being displayed
+		targetTempText.setText(room.getTargetTemp().toString());
+	}
+
+	private Integer updateCoolingVent(Integer currentTemp, Integer targetTemp, Integer currentVentState) {
+		int x = currentTemp-targetTemp;
+		
+		if (x > 2)
+		{
+			switch (currentVentState)
+			{
+			case VENT_CLOSED:
+				return VENT_HALF;
+			case VENT_HALF:
+				return VENT_OPEN;
+			default:
+				return currentVentState;
+			}
+		}
+		else if (x < 2)
+		{
+			switch (currentVentState)
+			{
+			case VENT_OPEN:
+				return VENT_HALF;
+			case VENT_HALF:
+				return VENT_CLOSED;
+			default:
+				return currentVentState;
+			}
+		}
+		else
+		{
+			if (currentVentState == VENT_OPEN)
+			{
+				return VENT_HALF;
+			}
+			else if (currentVentState == VENT_CLOSED)
+			{
+				return VENT_HALF;
+			}
+			else
+			{
+				return currentVentState;
+			}
+		}
+	}
+}

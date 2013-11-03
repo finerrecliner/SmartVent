@@ -5,12 +5,14 @@ import android.os.Parcelable;
 
 public class Room implements Parcelable {
 
+	private int id;
 	private String name;
 	private Integer currentTemp;
 	private Integer targetTemp;
 	private Integer ventState;
 	
-	public Room(String name) {
+	public Room(int id, String name) {
+		this.id = id;
 		this.name = name;
 		this.currentTemp = 70;
 		this.targetTemp = 70;
@@ -18,9 +20,6 @@ public class Room implements Parcelable {
 	}
 	public String getName() {
 		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public Integer getCurrentTemp() {
 		return currentTemp;
@@ -41,6 +40,7 @@ public class Room implements Parcelable {
 	}
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(id);
 		dest.writeString(name);
 		dest.writeInt(currentTemp);
 		dest.writeInt(targetTemp);
@@ -54,7 +54,7 @@ public class Room implements Parcelable {
 		
 		// create a new Person object from an intent Parcel
 		@Override public Room createFromParcel(Parcel source) {
-			Room r = new Room(source.readString());
+			Room r = new Room(source.readInt(), source.readString());
 			r.setCurrentTemp(source.readInt());
 			r.setTargetTemp(source.readInt());
 			r.setVentState(source.readInt());
@@ -74,5 +74,7 @@ public class Room implements Parcelable {
 	public void setVentState(Integer ventState) {
 		this.ventState = ventState;
 	}
-	
+	public int getId() {
+		return id;
+	}	
 }

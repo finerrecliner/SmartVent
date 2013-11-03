@@ -22,6 +22,7 @@ import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -148,6 +149,15 @@ public class RoomActivity extends Activity implements OnClickListener {
     	super.onDestroy();
     };
 
+    @Override
+    public void onBackPressed() {
+		Intent intent = new Intent(this, MainActivity.class);
+		intent.putExtra(getString(R.string.room), room);
+		setResult(RESULT_OK, intent);
+        super.onBackPressed();
+    }
+    
+    
 	@Override
 	public void onClick(View v) {
 		switch (v.getId())
@@ -166,7 +176,7 @@ public class RoomActivity extends Activity implements OnClickListener {
 		targetTempText.setText(room.getTargetTemp().toString());
 	}
 
-	private Integer updateCoolingVent(Integer currentTemp, Integer targetTemp, Integer currentVentState) {
+	public static Integer updateCoolingVent(Integer currentTemp, Integer targetTemp, Integer currentVentState) {
 		int x = currentTemp-targetTemp;
 		
 		if (x > 2)

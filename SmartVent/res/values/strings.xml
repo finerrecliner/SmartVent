@@ -10,5 +10,6 @@
     <string name="up">Up</string>
     <string name="down">Down</string>
     <string name="room">room</string>
+    <string name="home_blueprint">home blueprint</string>
 
 </resources>

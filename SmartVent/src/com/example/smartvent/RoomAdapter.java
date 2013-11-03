@@ -62,7 +62,7 @@ public class RoomAdapter extends ArrayAdapter<Room> {
 			// check to see if each individual view is null.
 			// if not, assign something
 			if (iconView != null){
-				iconView.setImageResource(android.R.drawable.ic_menu_gallery);
+//				iconView.setImageResource(android.R.drawable.ic_menu_gallery);
 			}
 			if (roomName != null){
 				roomName.setText(i.getName());
