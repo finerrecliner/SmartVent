@@ -9,21 +9,22 @@ int temp = 69;   // temperature from thermistor
  
 void setup() 
 { 
-  //myservo.attach(9);  // attaches the servo on pin 9 to the servo object 
+  myservo.attach(9);  // attaches the servo on pin 9 to the servo object 
   Serial.begin(9600); // setup serial connection for controller
 }
  
 void loop() 
 { 
         //Serial.print("I am in position: ");
-        //Serial.println(pos);
-        //Serial.print("Thermistor value: ");
-        temp = Thermistor(analogRead(0));
-        Serial.println(temp);
+        //Serial.print(pos);
+        //Serial.print(". Thermistor value: ");
+        Serial.println(Thermistor(analogRead(0)));
+        //temp = Thermistor(analogRead(0));
+        //Serial.println(temp);
         delay(1000);
 } 
 
-/*
+
 void serialEvent() 
 {
         // Listen for data on serial port
@@ -31,8 +32,8 @@ void serialEvent()
                 // read the incoming ASCII as an integer
                 incomingInt = Serial.parseInt();
                 
-                Serial.print("I heard: ");
-                Serial.println(incomingInt);
+                //Serial.print("I heard: ");
+                //Serial.println(incomingInt);
                 
                 if(incomingInt <= 100){
                   // format for servo, in 0-close, 100-open -> 0 open, 90 close
@@ -43,17 +44,6 @@ void serialEvent()
         } 
 }
 
-
-double ThermistorSimple(int RawADC) {
- double Temp;
- Temp = log(((10240000/RawADC) - 10000));
- Temp = 1 / (0.001129148 + (0.000234125 + (0.0000000876741 * Temp * Temp ))* Temp );
- Temp = Temp - 273.15;            // Convert Kelvin to Celcius
- Temp = Temp + 32; // offset for calibration
- //Temp = (Temp * 9.0)/ 5.0 + 32.0; // Convert Celcius to Fahrenheit
- return Temp;
-}
-*/
 
 double Thermistor(int RawADC) {
  // Inputs ADC Value from Thermistor and outputs Temperature in Celsius
@@ -69,11 +59,11 @@ double Thermistor(int RawADC) {
  Temp = Temp - 273.15;  // Convert Kelvin to Celsius                                         // Now it only means "Temperature"
 
 
- // BEGIN- Remove these lines for the function not to display anything
+ /* BEGIN- Remove these lines for the function not to display anything
   Serial.print("ADC: "); Serial.print(RawADC); Serial.print("/1024");  // Print out RAW ADC Number
   Serial.print(", Volts: "); Serial.print(((RawADC*3.181)/1024.0),3);   // 4.936 volts is what my USB Port outputs.
   Serial.print(", Resistance: "); Serial.print(Resistance); Serial.println("ohms");
- // END- Remove these lines for the function not to display anything
+ // END- Remove these lines for the function not to display anything */
 
  // Uncomment this line for the function to return Fahrenheit instead.
  //Temp = (Temp * 9.0)/ 5.0 + 32.0; // Convert to Fahrenheit
