@@ -1,7 +1,7 @@
 <?php
-$roomid = $_POST['room'];
-$ventid = $_POST['vent'];
-$setpoint = $_POST['setpoint'];
+$roomid = $_GET['room'];
+$ventid = $_GET['vent'];
+$setpoint = $_GET['setpoint'];
 
 $logStr = date(DATE_RFC2822);
 $logStr .= ": Setting room " . $roomid;
@@ -29,11 +29,12 @@ $room['state'] = $setpoint;
 // Send command to vent
 
 // If the vent is closing, turn off the unit
-if ($setpoint == '0')
+#if ($setpoint == '0')
     // Turn unit off
 
 #if ($ventid=='') {
-echo json_encode($room);
+#echo json_encode($room);
+echo "Done";
 #}
 #else {
 #    echo json_encode($room['vents'][$ventid]);

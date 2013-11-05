@@ -4,13 +4,13 @@
   <title>Test Form</title>
 </head><body>
 QUERY:
-<form method="post" action="query.php" name="testform">
+<form method="get" action="query.php" name="testform">
   <p> room:<input name="room"> </p>
   <p> vent:<input name="vent"> </p>
   <p> <input type="submit"> </p>
 </form>
 SET:
-<form method="post" action="set.php" name="testform">
+<form method="get" action="set.php" name="testform">
   <p> room:<input name="room"> </p>
   <p> vent:<input name="vent"> </p>
   <p> setpoint: <input name="setpoint"> </p>
