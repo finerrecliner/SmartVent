@@ -14,6 +14,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
@@ -70,17 +71,14 @@ public class RoomActivity extends Activity implements OnClickListener {
         		/* Read current status */
         		
 			    // Create a new HttpClient and Post Header
-			    HttpClient httpclient = new DefaultHttpClient();
-			    HttpPost httppost = new HttpPost("http://www.obycode.com/smartventure/query.php");
-		        
-			    try {
-			    	// Add data
-			        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-			        nameValuePairs.add(new BasicNameValuePair("room", room.getName()));
-			        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-			    	
+    			HttpClient httpclient = new DefaultHttpClient();
+    			String url = "http://192.168.38.62:8888/query.php" +
+    					"?room=" + room.getName().replaceAll(" ", "+");
+    			HttpGet httpget = new HttpGet(url);		        
+
+    			try {
 			    	// Execute HTTP Post Request
-			        HttpResponse response = httpclient.execute(httppost);
+			        HttpResponse response = httpclient.execute(httpget);
 			        BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
 			        String jsonStr = reader.readLine();
 			        JSONObject jsonObj = new JSONObject(jsonStr);
@@ -88,8 +86,6 @@ public class RoomActivity extends Activity implements OnClickListener {
 			        Log.i(getString(R.string.app_name), jsonObj.toString());
 			        room.setCurrentTemp(Integer.parseInt((String)jsonObj.get("temp")));
 			        Log.i(getString(R.string.app_name), room.getCurrentTemp().toString());			        
-			        room.setVentState(Integer.parseInt((String)jsonObj.get("state")));
-			        Log.i(getString(R.string.app_name), room.getVentState().toString());
 			        
 			    } catch (ClientProtocolException e) {
 			        Toast.makeText(getBaseContext(), "ClientProtocol Error", Toast.LENGTH_SHORT).show();
@@ -113,18 +109,14 @@ public class RoomActivity extends Activity implements OnClickListener {
         		
 			    // Create a new HttpClient and Post Header
 			    httpclient = new DefaultHttpClient();
-			    httppost = new HttpPost("http://www.obycode.com/smartventure/set.php");
-
+    			url = "http://192.168.38.62:8888/set.php" + 
+    					"?room=" + room.getName().replaceAll(" ", "+") +
+    					"&setpoint=" + RoomActivity.updateCoolingVent(room.getCurrentTemp(), room.getTargetTemp(), room.getVentState()).toString();
+    			httpget = new HttpGet(url);
+    			
 			    try {
-			        // Add your data
-			        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-			        nameValuePairs.add(new BasicNameValuePair("room", room.getName()));
-			        nameValuePairs.add(new BasicNameValuePair("setpoint",  updateCoolingVent(room.getCurrentTemp(), room.getTargetTemp(), room.getVentState()).toString()));
-			        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
 			        // Execute HTTP Post Request
-			        HttpResponse response = httpclient.execute(httppost);
-			        
+			        HttpResponse response = httpclient.execute(httpget);
 			    } catch (ClientProtocolException e) {
 			        Toast.makeText(getBaseContext(), "ClientProtocol Error", Toast.LENGTH_SHORT).show();
 			    } catch (IOException e) {

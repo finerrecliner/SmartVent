@@ -44,4 +44,8 @@
 <fullyQualifiedTypeName name="android.widget.AdapterView.OnItemClickListener"/>
 <fullyQualifiedTypeName name="android.content.Intent"/>
 <fullyQualifiedTypeName name="android.os.Parcelable"/>
+<fullyQualifiedTypeName name="com.example.smartvent.MainActivity"/>
+<fullyQualifiedTypeName name="org.apache.http.HttpMessage"/>
+<fullyQualifiedTypeName name="org.apache.http.client.methods.HttpGet"/>
+<fullyQualifiedTypeName name="java.util.concurrent.ScheduledExecutorService"/>
 </qualifiedTypeNameHistroy>

@@ -8,22 +8,13 @@
     android:paddingBottom="10dp"
     android:paddingTop="10dp"
     tools:context=".MainActivity" >
-    
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="6dip"
-        android:contentDescription="@string/unknown"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:src="@android:drawable/ic_media_play" />
 
 	<TextView
 	    android:id="@+id/quick_room_name"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="@string/unknown"
+	    android:paddingLeft="10dp"
 	    android:textSize="20sp" />
     
 	<TextView

@@ -55,15 +55,11 @@ public class RoomAdapter extends ArrayAdapter<Room> {
 			// This is how you obtain a reference to the TextViews.
 			// These TextViews are created in the XML files we defined.
 
-			ImageView iconView = (ImageView) v.findViewById(R.id.icon);
 			TextView roomName = (TextView) v.findViewById(R.id.quick_room_name);
 			TextView currentTemp = (TextView) v.findViewById(R.id.quick_current_temp);
 
 			// check to see if each individual view is null.
 			// if not, assign something
-			if (iconView != null){
-//				iconView.setImageResource(android.R.drawable.ic_menu_gallery);
-			}
 			if (roomName != null){
 				roomName.setText(i.getName());
 			}

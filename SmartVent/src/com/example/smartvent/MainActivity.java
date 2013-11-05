@@ -14,6 +14,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
@@ -37,7 +38,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
 	
 	private ArrayList<Room> rooms = new ArrayList<Room>();
 	private RoomAdapter adapter;
-	private List<ScheduledExecutorService> scheduleTaskExecutors = new ArrayList<ScheduledExecutorService>();
+	private ScheduledExecutorService scheduleTaskService;
 
 	
     @Override
@@ -46,13 +47,13 @@ public class MainActivity extends Activity implements OnItemClickListener {
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {
-        	rooms.add(new Room(0, "Kitchen"));
-        	rooms.add(new Room(1, "Conference Room"));
-        	rooms.add(new Room(2, "Living Room "));
+        	rooms.add(new Room(0, "Living Room"));
+        	rooms.add(new Room(1, "Kitchen"));
+        	rooms.add(new Room(2, "Conference Room"));
         }
         else
         {
-        	// use saved contact list.
+        	// use saved list.
         	rooms = savedInstanceState.getParcelableArrayList("rooms");
         }
 
@@ -63,78 +64,72 @@ public class MainActivity extends Activity implements OnItemClickListener {
 
         allRoomsView.setOnItemClickListener(this);
         
-        for (final Room r : rooms)
-        {
-        	scheduleTaskExecutors.add(Executors.newSingleThreadScheduledExecutor());
-        	scheduleTaskExecutors.get(r.getId()).scheduleAtFixedRate(new Runnable() {
-        		public void run() {
+        scheduleTaskService = Executors.newSingleThreadScheduledExecutor();
+        scheduleTaskService.scheduleAtFixedRate(new Runnable() {
+        	public void run() {
 
-        			/* Read current status */
+        		/* Read current status */
 
-        			// Create a new HttpClient and Post Header
-        			HttpClient httpclient = new DefaultHttpClient();
-        			HttpPost httppost = new HttpPost("http://www.obycode.com/smartventure/query.php");
+        		// Create a new HttpClient and Post Header
+        		HttpClient httpclient = new DefaultHttpClient();
+        		String url = "http://192.168.38.62:8888/query.php" +
+        				"?room=" + rooms.get(0).getName().replaceAll(" ", "+");
+        		Log.i(getString(R.string.app_name), "send from Main " + url);
+        		HttpGet httpget = new HttpGet(url);
 
-        			try {
-        				// Add data
-        				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-        				nameValuePairs.add(new BasicNameValuePair("room", r.getName()));
-        				httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+        		try {
+        			// Execute HTTP Post Request
+        			Log.i(getString(R.string.app_name), "here1");
+        			HttpResponse response = httpclient.execute(httpget);
+        			Log.i(getString(R.string.app_name), "here2");
+        			BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
+        			String jsonStr = reader.readLine();
+        			Log.i(getString(R.string.app_name), "here3");
+        			JSONObject jsonObj = new JSONObject(jsonStr);
+        			Log.i(getString(R.string.app_name), "here4");
 
-        				// Execute HTTP Post Request
-        				HttpResponse response = httpclient.execute(httppost);
-        				BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent(), "UTF-8"));
-        				String jsonStr = reader.readLine();
-        				JSONObject jsonObj = new JSONObject(jsonStr);
+        			Log.i(getString(R.string.app_name), jsonObj.toString());
+        			rooms.get(0).setCurrentTemp(Integer.parseInt((String)jsonObj.get("temp")));
+        			//Log.i(getString(R.string.app_name), r.getCurrentTemp().toString());			        
 
-        				//Log.i(getString(R.string.app_name), jsonObj.toString());
-        				r.setCurrentTemp(Integer.parseInt((String)jsonObj.get("temp")));
-        				//Log.i(getString(R.string.app_name), r.getCurrentTemp().toString());			        
-        				r.setVentState(Integer.parseInt((String)jsonObj.get("state")));
-        				//Log.i(getString(R.string.app_name), r.getVentState().toString());
-
-        			} catch (ClientProtocolException e) {
-        				Toast.makeText(getBaseContext(), "ClientProtocol Error", Toast.LENGTH_SHORT).show();
-        				Log.e(getString(R.string.app_name), "ClientProtocol Error");
-        			} catch (IOException e) {
-        				Toast.makeText(getBaseContext(), "IO HTTP Error", Toast.LENGTH_SHORT).show();
-        				Log.e(getString(R.string.app_name), "IO HTTP Error");
-        			} catch (JSONException e) {
-        				Toast.makeText(getBaseContext(), "JSON Error", Toast.LENGTH_SHORT).show();
-        				Log.e(getString(R.string.app_name), "JSON Error");
-        			}
-
-        			runOnUiThread(new Runnable() {
-        				public void run() {
-        					adapter.notifyDataSetChanged();
-        				}
-        			});
-
-
-        			/* Set new vent state */
-
-        			// Create a new HttpClient and Post Header
-        			httpclient = new DefaultHttpClient();
-        			httppost = new HttpPost("http://www.obycode.com/smartventure/set.php");
-
-        			try {
-        				// Add your data
-        				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-        				nameValuePairs.add(new BasicNameValuePair("room", r.getName()));
-        				nameValuePairs.add(new BasicNameValuePair("setpoint",  RoomActivity.updateCoolingVent(r.getCurrentTemp(), r.getTargetTemp(), r.getVentState()).toString()));
-        				httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-        				// Execute HTTP Post Request
-        				HttpResponse response = httpclient.execute(httppost);
-
-        			} catch (ClientProtocolException e) {
-        				Toast.makeText(getBaseContext(), "ClientProtocol Error", Toast.LENGTH_SHORT).show();
-        			} catch (IOException e) {
-        				Toast.makeText(getBaseContext(), "IO HTTP Error", Toast.LENGTH_SHORT).show();
-        			}
+        		} catch (ClientProtocolException e) {
+        			Toast.makeText(getBaseContext(), "ClientProtocol Error", Toast.LENGTH_SHORT).show();
+        			Log.e(getString(R.string.app_name), "ClientProtocol Error");
+        		} catch (IOException e) {
+        			Toast.makeText(getBaseContext(), "IO HTTP Error", Toast.LENGTH_SHORT).show();
+        			Log.e(getString(R.string.app_name), "IO HTTP Error");
+        		} catch (JSONException e) {
+        			Toast.makeText(getBaseContext(), "JSON Error", Toast.LENGTH_SHORT).show();
+        			Log.e(getString(R.string.app_name), "JSON Error");
         		}
-        	}, 0, 5, TimeUnit.SECONDS);
-        }        
+
+        		runOnUiThread(new Runnable() {
+        			public void run() {
+        				adapter.notifyDataSetChanged();
+        			}
+        		});
+
+
+        		/* Set new vent state */
+
+        		// Create a new HttpClient and Post Header
+        		httpclient = new DefaultHttpClient();
+        		url = "http://192.168.38.62:8888/set.php" + 
+        				"?room=" + rooms.get(0).getName().replaceAll(" ", "+") +
+        				"&setpoint=" + RoomActivity.updateCoolingVent(rooms.get(0).getCurrentTemp(), rooms.get(0).getTargetTemp(), rooms.get(0).getVentState()).toString();
+        		httpget = new HttpGet(url);
+
+        		try {
+        			// Execute HTTP Post Request
+        			HttpResponse response = httpclient.execute(httpget);
+
+        		} catch (ClientProtocolException e) {
+        			Toast.makeText(getBaseContext(), "ClientProtocol Error", Toast.LENGTH_SHORT).show();
+        		} catch (IOException e) {
+        			Toast.makeText(getBaseContext(), "IO HTTP Error", Toast.LENGTH_SHORT).show();
+        		}
+        	}
+        }, 0, 5, TimeUnit.SECONDS);
     }
     
     @Override
@@ -147,9 +142,7 @@ public class MainActivity extends Activity implements OnItemClickListener {
     @Override
     protected void onDestroy() {
     	// kill scheduled Task Executors
-    	for (ScheduledExecutorService s : scheduleTaskExecutors) {
-        	s.shutdown();			
-		}
+        	scheduleTaskService.shutdown();			
     	super.onDestroy();
     };
 

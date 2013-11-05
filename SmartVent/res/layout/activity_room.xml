@@ -5,50 +5,34 @@
     android:gravity="fill_vertical"
     android:orientation="vertical"
     tools:context=".RoomActivity" >
+    
+    <TextView
+        android:id="@+id/current_temp_val"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/unknown"
+        android:textSize="100sp" />
 
-    <LinearLayout
-        android:id="@+id/current_temp_row"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+	<TextView
+        android:id="@+id/set_temp_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/set_temperature"
+        android:gravity="center"
+        android:textSize="20sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/current_temp" />
+    <TextView
+        android:id="@+id/set_temp_val"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/unknown"
+        android:textSize="50sp" />
 
-        <TextView
-            android:id="@+id/current_temp_val"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:textSize="20sp"
-            android:text="@string/unknown" />
-
-    </LinearLayout>
-
-  <LinearLayout
-        android:id="@+id/set_temp_row"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/set_temp_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/set_temperature" />
-        
-        <TextView
-            android:id="@+id/set_temp_val"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:textSize="20sp"
-            android:text="@string/unknown" />
-    </LinearLayout>
-
-    <LinearLayout
+	<LinearLayout
         android:id="@+id/set_temp_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,7 +49,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/down" />
-        
-  	</LinearLayout>
-  
+    </LinearLayout>
+
 </LinearLayout>
