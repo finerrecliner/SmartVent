@@ -1,0 +1,575 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CF161DBA1826123E00DBAEAB /* Closed.png in Resources */ = {isa = PBXBuildFile; fileRef = CF161DB71826123E00DBAEAB /* Closed.png */; };
+		CF161DBB1826123E00DBAEAB /* HalfOpen.png in Resources */ = {isa = PBXBuildFile; fileRef = CF161DB81826123E00DBAEAB /* HalfOpen.png */; };
+		CF161DBC1826123E00DBAEAB /* Open.png in Resources */ = {isa = PBXBuildFile; fileRef = CF161DB91826123E00DBAEAB /* Open.png */; };
+		CF161DBE1826153300DBAEAB /* Snowflake.png in Resources */ = {isa = PBXBuildFile; fileRef = CF161DBD1826153300DBAEAB /* Snowflake.png */; };
+		CF161DEF1826992600DBAEAB /* Plane.png in Resources */ = {isa = PBXBuildFile; fileRef = CF161DED1826992600DBAEAB /* Plane.png */; };
+		CF161DF01826992600DBAEAB /* PlaneSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = CF161DEE1826992600DBAEAB /* PlaneSelected.png */; };
+		CF161DF41826AA0D00DBAEAB /* StatusBar.png in Resources */ = {isa = PBXBuildFile; fileRef = CF161DF21826AA0D00DBAEAB /* StatusBar.png */; };
+		CF161DF61826AC8900DBAEAB /* Meter.png in Resources */ = {isa = PBXBuildFile; fileRef = CF161DF51826AC8900DBAEAB /* Meter.png */; };
+		CFCD7D59182579B900D64478 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCD7D58182579B900D64478 /* Foundation.framework */; };
+		CFCD7D5B182579B900D64478 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCD7D5A182579B900D64478 /* CoreGraphics.framework */; };
+		CFCD7D5D182579B900D64478 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCD7D5C182579B900D64478 /* UIKit.framework */; };
+		CFCD7D63182579B900D64478 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7D61182579B900D64478 /* InfoPlist.strings */; };
+		CFCD7D65182579B900D64478 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD7D64182579B900D64478 /* main.m */; };
+		CFCD7D69182579B900D64478 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD7D68182579B900D64478 /* AppDelegate.m */; };
+		CFCD7D6C182579B900D64478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7D6A182579B900D64478 /* Main.storyboard */; };
+		CFCD7D6F182579B900D64478 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD7D6E182579B900D64478 /* ViewController.m */; };
+		CFCD7D71182579B900D64478 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7D70182579B900D64478 /* Images.xcassets */; };
+		CFCD7D78182579B900D64478 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCD7D77182579B900D64478 /* XCTest.framework */; };
+		CFCD7D79182579B900D64478 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCD7D58182579B900D64478 /* Foundation.framework */; };
+		CFCD7D7A182579B900D64478 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCD7D5C182579B900D64478 /* UIKit.framework */; };
+		CFCD7D82182579B900D64478 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7D80182579B900D64478 /* InfoPlist.strings */; };
+		CFCD7D84182579BA00D64478 /* SmartVentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD7D83182579B900D64478 /* SmartVentTests.m */; };
+		CFCD7D901825851900D64478 /* HouseBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7D8D1825851900D64478 /* HouseBlue.png */; };
+		CFCD7D911825851900D64478 /* HouseRed.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7D8E1825851900D64478 /* HouseRed.png */; };
+		CFCD7D921825851900D64478 /* Sunny.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7D8F1825851900D64478 /* Sunny.jpg */; };
+		CFCD7D9518259EE300D64478 /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7D9418259EE300D64478 /* Home.png */; };
+		CFCD7D971825A48B00D64478 /* Night.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7D961825A48B00D64478 /* Night.png */; };
+		CFCD7D991825A64400D64478 /* Away.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7D981825A64400D64478 /* Away.png */; };
+		CFCD7D9D1825A83400D64478 /* AwaySelected.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7D9A1825A83400D64478 /* AwaySelected.png */; };
+		CFCD7D9E1825A83400D64478 /* HomeSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7D9B1825A83400D64478 /* HomeSelected.png */; };
+		CFCD7D9F1825A83400D64478 /* NightSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7D9C1825A83400D64478 /* NightSelected.png */; };
+		CFCD7DA21825CF6100D64478 /* RoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCD7DA11825CF6100D64478 /* RoomViewController.m */; };
+		CFCD7DA51825D03900D64478 /* TempDown.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7DA31825D03900D64478 /* TempDown.png */; };
+		CFCD7DA61825D03900D64478 /* TempUp.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7DA41825D03900D64478 /* TempUp.png */; };
+		CFCD7DA81825D11A00D64478 /* TempBG.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7DA71825D11A00D64478 /* TempBG.png */; };
+		CFCD7DAC1826002F00D64478 /* Off.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCD7DAB1826002F00D64478 /* Off.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CFCD7D7B182579B900D64478 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFCD7D4D182579B900D64478 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFCD7D54182579B900D64478;
+			remoteInfo = SmartVent;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CF161DB71826123E00DBAEAB /* Closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Closed.png; sourceTree = "<group>"; };
+		CF161DB81826123E00DBAEAB /* HalfOpen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HalfOpen.png; sourceTree = "<group>"; };
+		CF161DB91826123E00DBAEAB /* Open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Open.png; sourceTree = "<group>"; };
+		CF161DBD1826153300DBAEAB /* Snowflake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Snowflake.png; sourceTree = "<group>"; };
+		CF161DED1826992600DBAEAB /* Plane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plane.png; sourceTree = "<group>"; };
+		CF161DEE1826992600DBAEAB /* PlaneSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlaneSelected.png; sourceTree = "<group>"; };
+		CF161DF21826AA0D00DBAEAB /* StatusBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StatusBar.png; sourceTree = "<group>"; };
+		CF161DF51826AC8900DBAEAB /* Meter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Meter.png; sourceTree = "<group>"; };
+		CFCD7D55182579B900D64478 /* SmartVent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartVent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFCD7D58182579B900D64478 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CFCD7D5A182579B900D64478 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CFCD7D5C182579B900D64478 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CFCD7D60182579B900D64478 /* SmartVent-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartVent-Info.plist"; sourceTree = "<group>"; };
+		CFCD7D62182579B900D64478 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CFCD7D64182579B900D64478 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CFCD7D66182579B900D64478 /* SmartVent-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartVent-Prefix.pch"; sourceTree = "<group>"; };
+		CFCD7D67182579B900D64478 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CFCD7D68182579B900D64478 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CFCD7D6B182579B900D64478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CFCD7D6D182579B900D64478 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CFCD7D6E182579B900D64478 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CFCD7D70182579B900D64478 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CFCD7D76182579B900D64478 /* SmartVentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartVentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFCD7D77182579B900D64478 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CFCD7D7F182579B900D64478 /* SmartVentTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartVentTests-Info.plist"; sourceTree = "<group>"; };
+		CFCD7D81182579B900D64478 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CFCD7D83182579B900D64478 /* SmartVentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartVentTests.m; sourceTree = "<group>"; };
+		CFCD7D8D1825851900D64478 /* HouseBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HouseBlue.png; sourceTree = "<group>"; };
+		CFCD7D8E1825851900D64478 /* HouseRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HouseRed.png; sourceTree = "<group>"; };
+		CFCD7D8F1825851900D64478 /* Sunny.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sunny.jpg; sourceTree = "<group>"; };
+		CFCD7D9418259EE300D64478 /* Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home.png; sourceTree = "<group>"; };
+		CFCD7D961825A48B00D64478 /* Night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Night.png; sourceTree = "<group>"; };
+		CFCD7D981825A64400D64478 /* Away.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Away.png; sourceTree = "<group>"; };
+		CFCD7D9A1825A83400D64478 /* AwaySelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AwaySelected.png; sourceTree = "<group>"; };
+		CFCD7D9B1825A83400D64478 /* HomeSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HomeSelected.png; sourceTree = "<group>"; };
+		CFCD7D9C1825A83400D64478 /* NightSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NightSelected.png; sourceTree = "<group>"; };
+		CFCD7DA01825CF6100D64478 /* RoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomViewController.h; sourceTree = "<group>"; };
+		CFCD7DA11825CF6100D64478 /* RoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomViewController.m; sourceTree = "<group>"; };
+		CFCD7DA31825D03900D64478 /* TempDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TempDown.png; sourceTree = "<group>"; };
+		CFCD7DA41825D03900D64478 /* TempUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TempUp.png; sourceTree = "<group>"; };
+		CFCD7DA71825D11A00D64478 /* TempBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TempBG.png; sourceTree = "<group>"; };
+		CFCD7DAB1826002F00D64478 /* Off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Off.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CFCD7D52182579B900D64478 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFCD7D5B182579B900D64478 /* CoreGraphics.framework in Frameworks */,
+				CFCD7D5D182579B900D64478 /* UIKit.framework in Frameworks */,
+				CFCD7D59182579B900D64478 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFCD7D73182579B900D64478 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFCD7D78182579B900D64478 /* XCTest.framework in Frameworks */,
+				CFCD7D7A182579B900D64478 /* UIKit.framework in Frameworks */,
+				CFCD7D79182579B900D64478 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CFCD7D4C182579B900D64478 = {
+			isa = PBXGroup;
+			children = (
+				CFCD7D5E182579B900D64478 /* SmartVent */,
+				CFCD7D7D182579B900D64478 /* SmartVentTests */,
+				CFCD7D57182579B900D64478 /* Frameworks */,
+				CFCD7D56182579B900D64478 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CFCD7D56182579B900D64478 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CFCD7D55182579B900D64478 /* SmartVent.app */,
+				CFCD7D76182579B900D64478 /* SmartVentTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CFCD7D57182579B900D64478 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CFCD7D58182579B900D64478 /* Foundation.framework */,
+				CFCD7D5A182579B900D64478 /* CoreGraphics.framework */,
+				CFCD7D5C182579B900D64478 /* UIKit.framework */,
+				CFCD7D77182579B900D64478 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CFCD7D5E182579B900D64478 /* SmartVent */ = {
+			isa = PBXGroup;
+			children = (
+				CFCD7D67182579B900D64478 /* AppDelegate.h */,
+				CFCD7D68182579B900D64478 /* AppDelegate.m */,
+				CFCD7D6A182579B900D64478 /* Main.storyboard */,
+				CFCD7DA01825CF6100D64478 /* RoomViewController.h */,
+				CFCD7DA11825CF6100D64478 /* RoomViewController.m */,
+				CFCD7D6D182579B900D64478 /* ViewController.h */,
+				CFCD7D6E182579B900D64478 /* ViewController.m */,
+				CFCD7D931825852700D64478 /* Images */,
+				CFCD7D70182579B900D64478 /* Images.xcassets */,
+				CFCD7D5F182579B900D64478 /* Supporting Files */,
+			);
+			path = SmartVent;
+			sourceTree = "<group>";
+		};
+		CFCD7D5F182579B900D64478 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CFCD7D60182579B900D64478 /* SmartVent-Info.plist */,
+				CFCD7D61182579B900D64478 /* InfoPlist.strings */,
+				CFCD7D64182579B900D64478 /* main.m */,
+				CFCD7D66182579B900D64478 /* SmartVent-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CFCD7D7D182579B900D64478 /* SmartVentTests */ = {
+			isa = PBXGroup;
+			children = (
+				CFCD7D83182579B900D64478 /* SmartVentTests.m */,
+				CFCD7D7E182579B900D64478 /* Supporting Files */,
+			);
+			path = SmartVentTests;
+			sourceTree = "<group>";
+		};
+		CFCD7D7E182579B900D64478 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CFCD7D7F182579B900D64478 /* SmartVentTests-Info.plist */,
+				CFCD7D80182579B900D64478 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CFCD7D931825852700D64478 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CF161DF51826AC8900DBAEAB /* Meter.png */,
+				CF161DF21826AA0D00DBAEAB /* StatusBar.png */,
+				CF161DED1826992600DBAEAB /* Plane.png */,
+				CF161DEE1826992600DBAEAB /* PlaneSelected.png */,
+				CF161DBD1826153300DBAEAB /* Snowflake.png */,
+				CF161DB71826123E00DBAEAB /* Closed.png */,
+				CF161DB81826123E00DBAEAB /* HalfOpen.png */,
+				CF161DB91826123E00DBAEAB /* Open.png */,
+				CFCD7DAB1826002F00D64478 /* Off.png */,
+				CFCD7DA71825D11A00D64478 /* TempBG.png */,
+				CFCD7DA31825D03900D64478 /* TempDown.png */,
+				CFCD7DA41825D03900D64478 /* TempUp.png */,
+				CFCD7D9A1825A83400D64478 /* AwaySelected.png */,
+				CFCD7D9B1825A83400D64478 /* HomeSelected.png */,
+				CFCD7D9C1825A83400D64478 /* NightSelected.png */,
+				CFCD7D981825A64400D64478 /* Away.png */,
+				CFCD7D961825A48B00D64478 /* Night.png */,
+				CFCD7D9418259EE300D64478 /* Home.png */,
+				CFCD7D8D1825851900D64478 /* HouseBlue.png */,
+				CFCD7D8E1825851900D64478 /* HouseRed.png */,
+				CFCD7D8F1825851900D64478 /* Sunny.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CFCD7D54182579B900D64478 /* SmartVent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFCD7D87182579BA00D64478 /* Build configuration list for PBXNativeTarget "SmartVent" */;
+			buildPhases = (
+				CFCD7D51182579B900D64478 /* Sources */,
+				CFCD7D52182579B900D64478 /* Frameworks */,
+				CFCD7D53182579B900D64478 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartVent;
+			productName = SmartVent;
+			productReference = CFCD7D55182579B900D64478 /* SmartVent.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CFCD7D75182579B900D64478 /* SmartVentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFCD7D8A182579BA00D64478 /* Build configuration list for PBXNativeTarget "SmartVentTests" */;
+			buildPhases = (
+				CFCD7D72182579B900D64478 /* Sources */,
+				CFCD7D73182579B900D64478 /* Frameworks */,
+				CFCD7D74182579B900D64478 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFCD7D7C182579B900D64478 /* PBXTargetDependency */,
+			);
+			name = SmartVentTests;
+			productName = SmartVentTests;
+			productReference = CFCD7D76182579B900D64478 /* SmartVentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CFCD7D4D182579B900D64478 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = SmartVentures;
+				TargetAttributes = {
+					CFCD7D75182579B900D64478 = {
+						TestTargetID = CFCD7D54182579B900D64478;
+					};
+				};
+			};
+			buildConfigurationList = CFCD7D50182579B900D64478 /* Build configuration list for PBXProject "SmartVent" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CFCD7D4C182579B900D64478;
+			productRefGroup = CFCD7D56182579B900D64478 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CFCD7D54182579B900D64478 /* SmartVent */,
+				CFCD7D75182579B900D64478 /* SmartVentTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CFCD7D53182579B900D64478 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFCD7D991825A64400D64478 /* Away.png in Resources */,
+				CF161DF61826AC8900DBAEAB /* Meter.png in Resources */,
+				CF161DF01826992600DBAEAB /* PlaneSelected.png in Resources */,
+				CFCD7DA51825D03900D64478 /* TempDown.png in Resources */,
+				CFCD7D901825851900D64478 /* HouseBlue.png in Resources */,
+				CFCD7D911825851900D64478 /* HouseRed.png in Resources */,
+				CFCD7DAC1826002F00D64478 /* Off.png in Resources */,
+				CF161DBB1826123E00DBAEAB /* HalfOpen.png in Resources */,
+				CFCD7D71182579B900D64478 /* Images.xcassets in Resources */,
+				CFCD7D9D1825A83400D64478 /* AwaySelected.png in Resources */,
+				CFCD7D9E1825A83400D64478 /* HomeSelected.png in Resources */,
+				CF161DBA1826123E00DBAEAB /* Closed.png in Resources */,
+				CFCD7DA81825D11A00D64478 /* TempBG.png in Resources */,
+				CFCD7D63182579B900D64478 /* InfoPlist.strings in Resources */,
+				CFCD7D9F1825A83400D64478 /* NightSelected.png in Resources */,
+				CFCD7D6C182579B900D64478 /* Main.storyboard in Resources */,
+				CFCD7DA61825D03900D64478 /* TempUp.png in Resources */,
+				CF161DEF1826992600DBAEAB /* Plane.png in Resources */,
+				CF161DF41826AA0D00DBAEAB /* StatusBar.png in Resources */,
+				CF161DBE1826153300DBAEAB /* Snowflake.png in Resources */,
+				CFCD7D921825851900D64478 /* Sunny.jpg in Resources */,
+				CF161DBC1826123E00DBAEAB /* Open.png in Resources */,
+				CFCD7D971825A48B00D64478 /* Night.png in Resources */,
+				CFCD7D9518259EE300D64478 /* Home.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFCD7D74182579B900D64478 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFCD7D82182579B900D64478 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CFCD7D51182579B900D64478 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFCD7D6F182579B900D64478 /* ViewController.m in Sources */,
+				CFCD7D69182579B900D64478 /* AppDelegate.m in Sources */,
+				CFCD7D65182579B900D64478 /* main.m in Sources */,
+				CFCD7DA21825CF6100D64478 /* RoomViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFCD7D72182579B900D64478 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFCD7D84182579BA00D64478 /* SmartVentTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CFCD7D7C182579B900D64478 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFCD7D54182579B900D64478 /* SmartVent */;
+			targetProxy = CFCD7D7B182579B900D64478 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CFCD7D61182579B900D64478 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFCD7D62182579B900D64478 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CFCD7D6A182579B900D64478 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFCD7D6B182579B900D64478 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CFCD7D80182579B900D64478 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFCD7D81182579B900D64478 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CFCD7D85182579BA00D64478 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CFCD7D86182579BA00D64478 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CFCD7D88182579BA00D64478 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartVent/SmartVent-Prefix.pch";
+				INFOPLIST_FILE = "SmartVent/SmartVent-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CFCD7D89182579BA00D64478 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartVent/SmartVent-Prefix.pch";
+				INFOPLIST_FILE = "SmartVent/SmartVent-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		CFCD7D8B182579BA00D64478 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartVent.app/SmartVent";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartVent/SmartVent-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SmartVentTests/SmartVentTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		CFCD7D8C182579BA00D64478 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartVent.app/SmartVent";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartVent/SmartVent-Prefix.pch";
+				INFOPLIST_FILE = "SmartVentTests/SmartVentTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CFCD7D50182579B900D64478 /* Build configuration list for PBXProject "SmartVent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFCD7D85182579BA00D64478 /* Debug */,
+				CFCD7D86182579BA00D64478 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFCD7D87182579BA00D64478 /* Build configuration list for PBXNativeTarget "SmartVent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFCD7D88182579BA00D64478 /* Debug */,
+				CFCD7D89182579BA00D64478 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFCD7D8A182579BA00D64478 /* Build configuration list for PBXNativeTarget "SmartVentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFCD7D8B182579BA00D64478 /* Debug */,
+				CFCD7D8C182579BA00D64478 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CFCD7D4D182579B900D64478 /* Project object */;
+}
