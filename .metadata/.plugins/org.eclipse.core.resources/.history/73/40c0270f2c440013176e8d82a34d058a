@@ -1,0 +1,67 @@
+package com.example.smartvent;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Room implements Parcelable {
+
+	private String name;
+	private Integer currentTemp;
+	private Integer targetTemp;
+	
+	public Room(String name) {
+		this.name = name;
+		this.currentTemp = 70;
+		this.targetTemp = 70;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Integer getCurrentTemp() {
+		return currentTemp;
+	}
+	public void setCurrentTemp(Integer currentTemp) {
+		this.currentTemp = currentTemp;
+	}
+	public Integer getTargetTemp() {
+		return targetTemp;
+	}
+	public void setTargetTemp(Integer targetTemp) {
+		this.targetTemp = targetTemp;
+	}
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(name);
+		dest.writeInt(currentTemp);
+		dest.writeInt(targetTemp);
+	}
+	
+	public static Parcelable.Creator<Room> CREATOR = new Creator<Room>() {
+		@Override public Room[] newArray(int size) {
+			return new Room[size];
+		}
+		
+		// create a new Person object from an intent Parcel
+		@Override public Person createFromParcel(Parcel source) {
+			Room r = new Room(source.readString());
+			p.setDisplayName(source.readString());
+			p.setFirstName(source.readString());
+			p.setLastName(source.readString());
+			p.setHomePhone(source.readString());
+			p.setWorkPhone(source.readString());
+			p.setMobilePhone(source.readString());
+			p.setEmail(source.readString());
+			p.setBirthday(source.readString());
+			return p;
+		}
+	};
+
+}

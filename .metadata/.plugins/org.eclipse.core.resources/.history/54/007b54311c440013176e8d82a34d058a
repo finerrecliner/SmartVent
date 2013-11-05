@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:gravity="fill_horizontal"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:id="@+id/quick_room" >
+    
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="6dip"
+        android:contentDescription="icon"
+        android:src="@drawable/ic_launcher" />
+
+	<TextView
+	    android:id="@+id/quick_room_name"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/unknown"
+	    android:textSize="20sp" />
+    
+	<TextView
+	    android:id="@+id/quick_current_temp"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/unknown"
+	    android:textSize="20sp" />
+	
+</LinearLayout>

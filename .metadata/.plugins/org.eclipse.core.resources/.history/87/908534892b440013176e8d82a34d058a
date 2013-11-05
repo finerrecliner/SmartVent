@@ -1,0 +1,57 @@
+package com.example.smartvent;
+
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+
+public class MainActivity extends Activity implements OnItemClickListener {
+	
+	private ArrayList<Room> rooms = new ArrayList<Room>();
+	private RoomAdapter adapter;
+	
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Room kitchen = new Room("Kitchen");
+        Room conf = new Room("Conference Room");
+        Room living = new Room("Living Room");
+        
+        rooms.add(kitchen);
+        rooms.add(conf);
+        rooms.add(living);
+        
+        // instantiate our ItemAdapter class
+        adapter = new RoomAdapter(this, R.layout.quick_room, rooms);
+        ListView allRoomsView = (ListView) findViewById(R.id.quick_room_list);
+        allRoomsView.setAdapter(adapter);
+        
+        allRoomsView.setOnItemClickListener(this);
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        return true;
+    }
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
+		// implicit intent
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.addCategory(Intent.CATEGORY_DEFAULT);
+		intent.setType("com.example.smartvent/Room");
+		intent.putExtra(getString(R.string.room), rooms.get(pos));
+		startActivity(intent);
+	}
+
+}

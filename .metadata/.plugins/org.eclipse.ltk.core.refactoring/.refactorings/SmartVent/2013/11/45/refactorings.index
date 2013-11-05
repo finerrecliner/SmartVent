@@ -1,0 +1,8 @@
+1383445393818	Encapsulate field 'ventState'
+1383490555457	Encapsulate field 'id'
+1383493741930	Rename resource 'home_blueprintpng'
+1383493746928	Copy file
+1383493756175	Copy file
+1383493758109	Copy file
+1383493876891	Extracts string 'home blueprint' into R.string.home_blueprint
+1383495341841	Delete element

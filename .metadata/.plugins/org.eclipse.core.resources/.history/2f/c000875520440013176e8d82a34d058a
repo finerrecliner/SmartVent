@@ -1,0 +1,7 @@
+package com.example.smartvent;
+
+import android.widget.ArrayAdapter;
+
+public class RoomAdapter extends ArrayAdapter<T> {
+
+}
